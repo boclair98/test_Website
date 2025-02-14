@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아이디/비밀번호 찾기</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(120deg, #000, #333);
+            color: white;
+        }
+        .card {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        .btn-primary {
+            background-color: #00ffcc;
+            border: none;
+            transition: background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background-color: #00e6b3;
+        }
+        .form-control {
+            background-color: #444;
+            color: white;
+            border: none;
+        }
+        .form-control:focus {
+            background-color: #555;
+            color: white;
+            border: 1px solid #00ffcc;
+            box-shadow: none;
+        }
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 14px;
+            color: #bbb;
+        }
+        footer a {
+            color: #00ffcc;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card p-4">
+                <h1 class="text-center text-uppercase mb-4" style="color: #00ffcc;">아이디/비밀번호 찾기</h1>
+                <form id="findForm" action="/searchid" method="post">
+                    <div class="mb-3">
+                        <label for="phonenumber" class="form-label">전화번호</label>
+                        <input type="phonenumber" id="phonenumber" name ='phonenumber' class="form-control" placeholder="전화번호 입력해주세요." required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">이름</label>
+                        <input type="name" id="name" name="name" class="form-control" placeholder="이름을 입력해주세요." required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">찾기</button>
+                </form>
+            </div>
+            <div class="text-center mt-4">
+                <img src="https://via.placeholder.com/400x200?text=Car+Image" alt="자동차 이미지" class="img-fluid rounded shadow">
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2025 자동차 회사. <a href="#">이용약관</a> 및 <a href="#">개인정보처리방침</a></p>
+</footer>
+
+<!-- Bootstrap Bundle JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById("findForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // 폼 제출 기본 동작 중단
+    const phoneNumber = document.getElementById("phonenumber").value;
+    const name = document.getElementById("name").value;
+
+    if (phoneNumber && name) {
+        // 입력 필드 값 확인 (디버깅용 출력)
+        console.log("전화번호:", phoneNumber);
+        console.log("이름:", name);
+
+        // 서버로 데이터 제출 (원하는 로직 추가)
+        alert("입력하신 정보로 아이디/비밀번호를 찾는 중입니다.");
+
+        // 여기서 폼을 제출하려면 아래 주석을 해제
+        event.target.submit();
+    } else {
+        alert("모든 필드를 채워주세요.");
+    }
+});
+
+</script>
+</body>
+</html>

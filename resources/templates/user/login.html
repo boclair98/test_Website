@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Car Dealer Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            background: linear-gradient(to right, #000000, #434343); /* 자동차 관련 어두운 톤 */
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        .form-signin {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .form-signin img {
+            animation: fadeInDown 1s;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(to right, #FF8008, #FFC837); /* 자동차 관련 주황빛 */
+            border: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(to right, #FFC837, #FF8008);
+            transform: scale(1.05);
+        }
+
+        .form-floating input:focus {
+            border-color: #FFC837;
+            box-shadow: 0 0 0 0.2rem rgba(255, 128, 8, 0.25);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #ddd;
+        }
+
+        footer a {
+            color: #FFC837;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+<main class="form-signin text-dark">
+    <form action="/login" method="post">
+        <!-- 자동차 관련 로고 -->
+        <img class="mb-4" src="https://cdn-icons-png.flaticon.com/512/159/159833.png" alt="Car Icon" width="72" height="72">
+        <h1 class="h3 mb-3 fw-normal text-center">Car Dealer Login</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="email" placeholder="Dealer ID" name="email" required>
+            <label for="email"><i class="fas fa-id-card"></i> Dealer ID</label>
+        </div>
+        <div class="alert alert-danger" th:if="${erroremail}" th:text="${erroremail}">
+            <!-- 에러 메시지가 여기에 표시됩니다. -->
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required>
+            <label for="floatingPassword"><i class="fas fa-lock"></i> Password</label>
+        </div>
+        <div class="alert alert-danger" th:if="${errorpassword}" th:text="${errorpassword}">
+            <!-- 에러 메시지가 여기에 표시됩니다. -->
+        </div>
+
+        <div class="form-check text-start mb-3">
+            <input class="form-check-input" type="checkbox" value="remember-me" id="rememberCheck">
+            <label class="form-check-label" for="rememberCheck">Remember me</label>
+        </div>
+
+        <button class="btn btn-primary w-100 py-2" type="submit">
+            <i class="fas fa-sign-in-alt"></i> Sign In
+        </button>
+    </form>
+    <footer>
+        <p class="mt-4">&copy; 2024 Car Dealer. <a href="/join">회원가입</a> · <a href="/searchid">아이디 찾기</a></p>
+    </footer>
+</main>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
